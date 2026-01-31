@@ -10,18 +10,16 @@ module "eks" {
 
   enable_irsa = true
 
+  cluster_endpoint_public_access  = true
+  cluster_endpoint_private_access = false
+
   eks_managed_node_groups = {
     default = {
       instance_types = ["t3.micro"]
 
       min_size     = 1
-      max_size     = 2
+      max_size     = 1
       desired_size = 1
     }
-  }
-
-  tags = {
-    Environment = "dev"
-    Project     = "hotel-devsecops"
   }
 }
